@@ -17,6 +17,15 @@ const favicon = require("serve-favicon");
 // https://www.npmjs.com/package/path
 const path = require("path");
 
+//
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ironrooms";
+
+const EXPRESS_SESSION_SECRET =
+  process.env.EXPRESS_SESSION_SECRET || "SessionSecret";
+
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs
@@ -35,5 +44,23 @@ module.exports = (app) => {
   app.use(express.static(path.join(__dirname, "..", "public")));
 
   // Handles access to the favicon
-  app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
+  app.use(
+    favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))
+  );
+
+  console.log(`Session store using: ${MONGODB_URI}`);
+
+  app.use(
+    session({
+      secret: EXPRESS_SESSION_SECRET,
+      resave: true,
+      saveUninitialized: true,
+      cookie: {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+      },
+      store: MongoStore.create({
+        mongoUrl: MONGODB_URI,
+      }),
+    })
+  );
 };

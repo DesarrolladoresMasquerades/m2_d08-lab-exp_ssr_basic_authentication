@@ -50,6 +50,14 @@ Now you are ready to start 🚀
 
 <br>
 
+Add the `.env` file
+
+```text
+PORT = 3000
+MONGODB_URI=<mongo connection string with username, password and dbname>
+EXPRESS_SESSION_SECRET=<Use a random string here>
+```
+
 ## Iteration 1 | Sign Up
 
 We have to create the _signup_ feature - the goal is to enable our users to register in our application. The users have to provide the following information:
