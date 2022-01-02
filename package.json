@@ -1,6 +1,6 @@
 {
-  "name": "lab-express-basic-auth",
-  "version": "1.0.0",
+  "name": "exp-ssr-basic-auth",
+  "version": "0.0.0",
   "private": true,
   "engines": {
     "node": "16",
