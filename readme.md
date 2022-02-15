@@ -24,7 +24,7 @@ In this lab, you are going to reinforce the knowledge on how to create basic aut
   ```
   git add .
   git commit -m "done"
-  git push origin master
+  git push origin main
   ```
 
 - Create Pull Request so your TAs can check up your work.
@@ -42,13 +42,21 @@ _In this lab, you literally have to recreate materials your instructors went thr
 After forking and cloning the project, you will have to install all the dependencies:
 
 ```sh
-$ cd lab-express-basic-auth
+$ cd exp-ssr-basic-auth
 $ npm install
 ```
 
 Now you are ready to start 🚀
 
 <br>
+
+Add the `.env` file
+
+```text
+PORT = 3000
+MONGODB_URI=<mongo connection string with username, password and dbname>
+EXPRESS_SESSION_SECRET=<Use a random string here>
+```
 
 ## Iteration 1 | Sign Up
 
